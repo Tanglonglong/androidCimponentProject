@@ -16,6 +16,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
     api project(':library-network')
+    api project(':library-base')
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

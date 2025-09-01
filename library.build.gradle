@@ -8,6 +8,9 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField "boolean", "IS_MODULE_LIBRARY", "${project.properties['isModuleLibrary'] ?: false}"
+
     }
 
     buildTypes {
@@ -19,6 +22,9 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
+    }
+    buildFeatures {
+        buildConfig = true
     }
 }
 
