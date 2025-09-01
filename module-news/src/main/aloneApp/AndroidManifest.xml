@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application
+        android:name=".NewsModuleApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/news_m_ic_launcher"
+        android:label="@string/news_m_app_name"
+        android:roundIcon="@mipmap/news_m_ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/news_m_Theme.ComponentProject">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

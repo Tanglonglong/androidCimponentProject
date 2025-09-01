@@ -1,0 +1,9 @@
+apply from: "../library.build.gradle"
+
+android {
+    namespace 'com.example.library_base'
+}
+
+dependencies {
+
+}
