@@ -14,7 +14,8 @@ refreshHeaderTwoLevelVersion = "3.0.0-alpha"
 refreshHeaderMaterialVersion = "3.0.0-alpha"
 refreshHeaderFalsifyVersion = "3.0.0-alpha"
 refreshHeaderRadarVersion = "3.0.0-alpha"
-glide = "4.15.1"
+glide = "5.0.4"
+arouterApi = "1.5.2"
 
 
 [libraries]
@@ -36,6 +37,7 @@ scwang90-refresh-header-two-level = { module = "io.github.scwang90:refresh-heade
 scwang90-refresh-footer-ball = { module = "io.github.scwang90:refresh-footer-ball", version.ref = "refreshFooterBallVersion" }
 scwang90-refresh-footer-classics = { module = "io.github.scwang90:refresh-footer-classics", version.ref = "refreshFooterClassicsVersion" }
 glide = { module = "com.github.bumptech.glide:glide", version.ref = "glide" }
+arouter-api = { group = "com.alibaba", name = "arouter-api", version.ref = "arouterApi" }
 
 
 [plugins]

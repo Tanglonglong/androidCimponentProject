@@ -3,6 +3,8 @@ package com.example.newsmodule;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -14,6 +16,8 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.alibaba.android.arouter.facade.annotation.Route;
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.example.basenetwork.NetworkApi;
 import com.example.basenetwork.observer.BaseObserver;
 import com.example.newsmodule.adapter.NewAdapter;
@@ -31,6 +35,7 @@ import java.util.List;
 import static com.example.newsmodule.NetWorkConfig.JUHE_BASE_URL;
 
 
+@Route(path = "/news/MainActivity", group = "news")
 public class MainActivity extends AppCompatActivity {
 
     private int mPage = 1;
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private SmartRefreshLayout mRefreshLayout;
     private NewAdapter mNewAdapter;
     private List<NewBean> mData = new ArrayList<>();
+
+    private Button mGoJokesBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +88,7 @@ public class MainActivity extends AppCompatActivity {
                 getData();
             }
         });
+       mGoJokesBtn = findViewById(R.id.go_jock_btn);
     }
 
     private void initListener() {
@@ -91,6 +99,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, NewDetailsActivity.class);
                 intent.putExtra("url", mData.get(position).getUrl());
                 MainActivity.this.startActivity(intent);
+            }
+        });
+        mGoJokesBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build("/jokes/JokesMainActivity").navigation();
             }
         });
     }

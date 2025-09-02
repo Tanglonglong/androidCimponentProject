@@ -5,6 +5,8 @@ import android.content.res.Configuration;
 
 import androidx.annotation.NonNull;
 
+import com.alibaba.android.arouter.launcher.ARouter;
+
 public class BaseApplication extends Application {
 
     public static BaseApplication sInstance;
@@ -13,6 +15,12 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
+        if (BuildConfig.DEBUG)
+        {
+            ARouter.openLog(); // 开启日志
+            ARouter.openDebug(); // 使用InstantRun的时候，需要打开该开关，上线之后关闭，否则有安全风险
+        }
+        ARouter.init(this);
     }
 
     @Override

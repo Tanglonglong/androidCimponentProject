@@ -1,11 +1,11 @@
 apply from: "../module.build.gradle"
 android {
-    namespace 'com.example.newsmodule'
+    namespace 'com.example.module_jokes'
     defaultConfig {
         if (!isModuleLibrary.toBoolean()) {
-            applicationId "com.example.newsmodule"
+            applicationId "com.example.module_jokes"
         }
-        resourcePrefix "news_m_"
+        resourcePrefix "jokes_m_"
     }
 }
 
@@ -22,6 +22,9 @@ dependencies {
     implementation libs.scwang90.refresh.footer.ball        //球脉冲加载
     implementation libs.scwang90.refresh.footer.classics    //经典加载
     implementation libs.glide
+    implementation libs.appcompat
+    implementation libs.material
+    implementation libs.activity
 
 
 }

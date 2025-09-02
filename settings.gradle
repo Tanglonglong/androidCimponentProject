@@ -64,3 +64,4 @@ include ':library-network'
 include ':module-news'
 
 include ':library-base'
+include ':module-jokes'

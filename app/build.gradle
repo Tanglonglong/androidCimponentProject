@@ -44,8 +44,9 @@ dependencies {
     androidTestImplementation libs.espresso.core
     implementation project(':library-base')
     if(isModuleLibrary.toBoolean()){
-        //整体运行
+        //整体项目运行
         implementation project(':module-news')
+        implementation project(':module-jokes')
     }
 
 
