@@ -54,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.news_m_activity_main);
-//        NetworkRequiredInfo mNetworkRequiredInfo = new NetworkRequiredInfo.Builder(getApplication())
-//                .baseUrl(JUHE_BASE_URL)
-//                .build();
-//        NetworkApi.init(mNetworkRequiredInfo);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
