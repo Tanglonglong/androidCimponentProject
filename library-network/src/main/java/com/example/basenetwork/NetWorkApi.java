@@ -12,31 +12,19 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-
-
-/**
- *
- *
- * 通过文件来隔离不同baseURL的api接口，已经用工厂模式代替
- * 不删此文件，是本人觉得这样写方便一点，不过会存在新增baseUrl
- * 就会存在要改network library，不够高内聚，基础library要尽量少改
- *
- *
- * **/
-public class FootballNetworkApi {
-
+public class NetWorkApi {
     //获取APP运行状态及版本信息，用于日志打印
-    private static INetworkRequiredInfo sINetworkRequiredInfo;
+    private  INetworkRequiredInfo sINetworkRequiredInfo;
     //OkHttp客户端
-    private static OkHttpClient sOkHttpClient;
+    private  OkHttpClient sOkHttpClient;
     //sRetrofitHashMap
-    private static HashMap<String, Retrofit> sRetrofitHashMap = new HashMap<>();
+    private  HashMap<String, Retrofit> sRetrofitHashMap = new HashMap<>();
 
-    public static void init(INetworkRequiredInfo networkRequiredInfo) {
+    public NetWorkApi(INetworkRequiredInfo networkRequiredInfo){
         sINetworkRequiredInfo = networkRequiredInfo;
     }
 
-    public static <T> T createService(Class<T> serviceClass) {
+    public  <T> T createService(Class<T> serviceClass) {
         return getRetrofit(serviceClass).create(serviceClass);
     }
 
@@ -45,7 +33,7 @@ public class FootballNetworkApi {
      *
      * @return OkHttpClient
      */
-    private static OkHttpClient getOkHttpClient() {
+    private OkHttpClient getOkHttpClient() {
         if (sOkHttpClient == null) {
             //OkHttp构建器
             OkHttpClient.Builder builder = new OkHttpClient.Builder();
@@ -82,7 +70,7 @@ public class FootballNetworkApi {
      * @param serviceClass 服务类
      * @return Retrofit
      */
-    private static Retrofit getRetrofit(Class serviceClass) {
+    private Retrofit getRetrofit(Class serviceClass) {
         if (sRetrofitHashMap.get(sINetworkRequiredInfo.getBaseUrl() + serviceClass.getName()) != null) {
             //刚才上面定义的Map中键是String，值是Retrofit，当键不为空时，必然有值，有值则直接返回。
             return sRetrofitHashMap.get(sINetworkRequiredInfo.getBaseUrl() + serviceClass.getName());
@@ -105,5 +93,4 @@ public class FootballNetworkApi {
         //最后返回即可
         return retrofit;
     }
-
 }

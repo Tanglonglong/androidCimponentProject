@@ -30,7 +30,6 @@ public class FootballAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     public FootballAdapter(Context context, @Nullable List<FootballItem> data) {
         this.mContext = context;
         this.mData = data;
-        System.out.println("CCCCCCCCCCCC:" + mData.size());
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {

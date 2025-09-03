@@ -36,6 +36,8 @@ public class FootballMainActivity extends AppCompatActivity {
     private List<FootballItem> mData = new ArrayList<>();
     private TextView mTitleTv, mDesTv;
 
+    private NetWorkBus mNetWorkBus;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,7 @@ public class FootballMainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+        mNetWorkBus = NetWorkBus.getInstance(getApplication());
         initView();
         initData();
         initListener();
@@ -70,7 +73,7 @@ public class FootballMainActivity extends AppCompatActivity {
     }
 
     private void getData() {
-        NetWorkBus.getFootballWithNetWork("yingchao", new BaseObserver<FootballResponse>() {
+        mNetWorkBus.getFootballWithNetWork("yingchao", new BaseObserver<FootballResponse>() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onSuccess(FootballResponse newResponse) {
@@ -92,7 +95,6 @@ public class FootballMainActivity extends AppCompatActivity {
                             mData.add(footballcItem);
                         }
                     }
-                    System.out.println("!!!!!!!!!!!!!!!!!!!!:" + mData.size());
                     mNewAdapter.notifyDataSetChanged();
                 } else {
                     Toast.makeText(FootballMainActivity.this, "业务异常code：" + newResponse.getError_code(), Toast.LENGTH_SHORT).show();

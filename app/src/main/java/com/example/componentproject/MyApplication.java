@@ -1,19 +1,13 @@
 package com.example.componentproject;
 
-
 import android.content.res.Configuration;
-
 import androidx.annotation.NonNull;
-
 import com.example.componentproject.utils.ReflectionInitApplication;
 import com.example.library_base.BaseApplication;
-//import com.example.newsmodule.network.NetworkRequiredInfo;
-//import com.example.newsmodule.NewsModuleApplication;
 
 
 public class MyApplication extends BaseApplication {
 
-//    public NetworkRequiredInfo mNetworkRequiredInfo;
 
     @Override
     public void onCreate() {
@@ -32,24 +26,8 @@ public class MyApplication extends BaseApplication {
          *
          * **/
 
-        System.out.println("AAAAAAAAAAAAAAAAA主模块");
+        System.out.println("主模块");
         ReflectionInitApplication.getInstance(this).initOnCreate();
-
-
-
-
-
-//        NewsModuleApplication newsModuleApplication = new NewsModuleApplication();
-//        newsModuleApplication.onCreateInit(this);
-//
-//        System.out.println("BBBBBBBBBBBBBB:" + newsModuleApplication.mNetworkRequiredInfo.hashCode());
-//
-//        System.out.println("CCCCCCCCCCCCCC:" + mNetworkRequiredInfo);
-
-//        ApplicationInit applicationInit = new ApplicationInit();
-//        applicationInit.initApplicationOnCreate(this);
-//        NetworkRequiredInfo mNetworkRequiredInfo1 = applicationInit.mNetworkRequiredInfo;
-//        System.out.println("CCCCCCCCCCCCCC:" + mNetworkRequiredInfo1.hashCode());
 
     }
 

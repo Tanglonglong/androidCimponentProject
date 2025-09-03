@@ -30,7 +30,7 @@ public class BaseNetworkApi {
     //sRetrofitHashMap
     private static HashMap<String, Retrofit> sRetrofitHashMap = new HashMap<>();
 
-    public static void init(INetworkRequiredInfo networkRequiredInfo) {
+    public BaseNetworkApi(INetworkRequiredInfo networkRequiredInfo){
         sINetworkRequiredInfo = networkRequiredInfo;
     }
 
@@ -102,26 +102,6 @@ public class BaseNetworkApi {
         sRetrofitHashMap.put(sINetworkRequiredInfo.getBaseUrl() + serviceClass.getName(), retrofit);
         //最后返回即可
         return retrofit;
-    }
-
-    /**
-     * 配置RxJava 完成线程的切换
-     */
-    public static <T> ObservableTransformer<T, T> applySchedulers() {
-        return new ObservableTransformer<T, T>() {
-            @Override
-            public ObservableSource<T> apply(Observable<T> upstream) {
-                return upstream.subscribeOn(Schedulers.io())//线程订阅
-                        .observeOn(AndroidSchedulers.mainThread());//观察Android主线程
-
-            }
-        };
-    }
-
-    public static <T> ObservableTransformer<T, T> applySchedulers1() {
-        return observable -> observable
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
     }
 
 }
