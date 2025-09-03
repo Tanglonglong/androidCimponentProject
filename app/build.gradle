@@ -39,6 +39,7 @@ dependencies {
     implementation libs.activity
     implementation libs.constraintlayout
 
+
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
@@ -47,6 +48,7 @@ dependencies {
         //整体项目运行
         implementation project(':module-news')
         implementation project(':module-jokes')
+        implementation project(':module-football')
     }
 
 

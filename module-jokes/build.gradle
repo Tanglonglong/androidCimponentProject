@@ -1,9 +1,9 @@
 apply from: "../module.build.gradle"
 android {
-    namespace 'com.example.module_jokes'
+    namespace 'com.example.modulejokes'
     defaultConfig {
         if (!isModuleLibrary.toBoolean()) {
-            applicationId "com.example.module_jokes"
+            applicationId "com.example.modulejokes"
         }
         resourcePrefix "jokes_m_"
     }

@@ -1,7 +1,7 @@
 package com.example.newsmodule.network;
 
 
-import com.example.basenetwork.NetworkApi;
+import com.example.basenetwork.BaseNetworkApi;
 import com.example.basenetwork.observer.BaseObserver;
 import com.example.newsmodule.api.ApiService;
 import com.example.newsmodule.bean.NewResponse;
@@ -12,7 +12,7 @@ import java.util.Map;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-import static com.example.newsmodule.NetWorkConfig.JUHE_API_JEY;
+import static com.example.newsmodule.network.NetWorkConfig.JUHE_API_JEY;
 
 public class NetWorkBus {
 
@@ -41,19 +41,10 @@ public class NetWorkBus {
         parms.put("page_size", String.valueOf(pageSize));
         parms.put("is_filter", String.valueOf(isFilter));
         parms.putAll(COM_PARMA);
-        NetworkApi.createService(ApiService.class)
+        BaseNetworkApi.createService(ApiService.class)
                 .getNews(parms)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(callBack);
-
-        //下面这种是通过用compose操作符将链式调用里面重复的线程调度代码封装成一个新的Observable
-        //核心作用是通过封装多个操作符实现逻辑复用，同时保持链式调用的简洁性
-//        NetworkApi.createService(ApiService.class)
-//                .getNews(parms)
-//                .compose(NetworkApi.<NewResponse>applySchedulers())
-//                .subscribe(callBack);
-
-
     }
 }

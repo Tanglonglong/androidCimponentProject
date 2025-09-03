@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
 
 import com.example.componentproject.utils.ReflectionInitApplication;
 import com.example.library_base.BaseApplication;
-//import com.example.newsmodule.NetworkRequiredInfo;
+//import com.example.newsmodule.network.NetworkRequiredInfo;
 //import com.example.newsmodule.NewsModuleApplication;
 
 

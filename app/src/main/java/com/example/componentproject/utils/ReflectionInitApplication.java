@@ -2,8 +2,11 @@ package com.example.componentproject.utils;
 
 import android.app.Application;
 import android.content.res.Configuration;
+
 import androidx.annotation.NonNull;
+
 import com.example.library_base.IModuleApplicationInit;
+
 import java.util.Hashtable;
 
 public class ReflectionInitApplication {
@@ -11,9 +14,6 @@ public class ReflectionInitApplication {
     private final Application mApplication;
 
     private static volatile ReflectionInitApplication sInstance;
-
-    public static String[] sInitModulePackages = {
-            "com.example.newsmodule.ApplicationInit"};
 
     public static Hashtable<String, IModuleApplicationInit> classMap = new Hashtable<>();//Hashtable value不能为空
 
@@ -35,10 +35,13 @@ public class ReflectionInitApplication {
 
 
     public static String[] sInitApplicationPackage = {
-            "com.example.newsmodule.ApplicationInit"};
+            "com.example.basenetwork.NetWorkInit",
+            "com.example.newsmodule.ApplicationInit",
+            "com.example.modulejokes.ApplicationInit",
+            "com.example.module_football.ApplicationInit"};
 
 
-    private IModuleApplicationInit getInitClass(String item){
+    private IModuleApplicationInit getInitClass(String item) {
         Class<?> clazz = null;
         try {
             clazz = Class.forName(item);
@@ -53,9 +56,10 @@ public class ReflectionInitApplication {
         }
         return init;
     }
+
     public void initOnCreate() {
         for (String item : sInitApplicationPackage) {
-            if(classMap.containsKey(item)) classMap.get(item).onCreate(mApplication);
+            if (classMap.containsKey(item)) classMap.get(item).onCreate(mApplication);
             else {
                 IModuleApplicationInit init = getInitClass(item);
                 if (!classMap.containsKey(item)) {
@@ -68,7 +72,8 @@ public class ReflectionInitApplication {
 
     public void initOnConfigurationChanged(@NonNull Configuration newConfig) {
         for (String item : sInitApplicationPackage) {
-            if(classMap.containsKey(item)) classMap.get(item).onConfigurationChanged(mApplication, newConfig);
+            if (classMap.containsKey(item))
+                classMap.get(item).onConfigurationChanged(mApplication, newConfig);
             else {
                 IModuleApplicationInit init = getInitClass(item);
                 if (!classMap.containsKey(item)) {

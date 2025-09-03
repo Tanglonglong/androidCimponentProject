@@ -4,6 +4,7 @@ package com.example.componentproject;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -15,6 +16,10 @@ import com.alibaba.android.arouter.launcher.ARouter;
 
 public class BusMainActivity extends AppCompatActivity {
 
+
+    private Button mNewsModule, mJokesModule, mFoolBalModule, mMoneyModule;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +30,40 @@ public class BusMainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        Button btn_module1 = findViewById(R.id.btn_module1);
-        //测试后续用阿里路由
-        btn_module1.setOnClickListener(new View.OnClickListener() {
+        initView();
+        initListener();
+    }
+
+    private void initView() {
+        mNewsModule = findViewById(R.id.btn_module1);
+        mJokesModule = findViewById(R.id.btn_module2);
+        mFoolBalModule = findViewById(R.id.btn_module3);
+        mMoneyModule = findViewById(R.id.btn_module4);
+    }
+
+    private void initListener(){
+        mNewsModule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ARouter.getInstance().build("/news/MainActivity").navigation();
-
             }
         });
+        mJokesModule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build("/jokes/JokesMainActivity").navigation();
+            }
+        });
+        mFoolBalModule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ARouter.getInstance().build("/football/FootballMainActivity").navigation();
+            }
+        });
+
+
     }
+
+
+
 }

@@ -13,6 +13,7 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/library-base" />
             <option value="$PROJECT_DIR$/library-network" />
+            <option value="$PROJECT_DIR$/module-football" />
             <option value="$PROJECT_DIR$/module-jokes" />
             <option value="$PROJECT_DIR$/module-news" />
           </set>

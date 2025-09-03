@@ -18,7 +18,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.example.basenetwork.NetworkApi;
 import com.example.basenetwork.observer.BaseObserver;
 import com.example.newsmodule.adapter.NewAdapter;
 import com.example.newsmodule.bean.NewBean;
@@ -31,8 +30,6 @@ import com.scwang.smart.refresh.layout.listener.OnRefreshListener;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static com.example.newsmodule.NetWorkConfig.JUHE_BASE_URL;
 
 
 @Route(path = "/news/MainActivity", group = "news")
